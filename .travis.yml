@@ -4,4 +4,5 @@ python:
 # install dependencies
 install: pip install
 # run tests
-script: nosetests
+# script: nosetests
+script: ./setup.py test
