@@ -2,7 +2,8 @@ language: python
 python:
   - "2.7"
 # install dependencies
-install: pip install
+#install: pip install
+install: python setup.py install
 # run tests
 # script: nosetests
-script: ./setup.py test
+script: python setup.py test
