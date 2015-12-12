@@ -2,6 +2,7 @@
 import sys
 from setuptools.command.test import test as TestCommand
 from setuptools import Command
+import setuptools
 
 try:
     from setupext import janitor
@@ -22,23 +23,27 @@ class ToxCommand(TestCommand):
         self.test_args = []
         self.test_suite = True
     def run_tests(self):
-        #import here, cause outside the eggs aren't loaded
+        # import here, cause outside the eggs aren't loaded
         import tox
         import shlex
         errno = tox.cmdline(args=shlex.split(self.tox_args))
         sys.exit(errno)
 
-class FixCopyright(Command):
-    description = 'Fix copyright on all files'
-    user_options = tuple()
+class FixHeader(setuptools.Command):
+    description = 'fix header files'
+    user_options = [
+                    ('baselines', 'b', 'list of all baselines to use, comma separated (default: setup.py)')
+                    ]
+    
     def initialize_options(self):
-        """init options"""
-        pass
-
+        print 'initilize'
+        self.baselines = None
+        
     def finalize_options(self):
-        """finalize options"""
-        pass
+        print 'finalize'
+        #self.set_undefined_options('baselines', ('baselines', 'baselines'))
+#        self.set_undefined_options('baselines', 'setup.py')
 
     def run(self):
-        """runner"""
-        pass # XXX DO THE JOB HERE
+        print '*** printing %s' % self.baselines
+        

@@ -2,9 +2,6 @@ language: python
 python:
   - "2.7"
 # install dependencies
-#install: pip install
-install: pip install behave
-install: python setup.py install
+install: pip install behave nose PyHamcrest
 # run tests
-# script: nosetests
-script: python setup.py test
+script: behave

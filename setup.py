@@ -20,10 +20,11 @@
 
 from setuptools import setup, find_packages
 from setuptools_behave import behave_test
-from setup_utility import CleanCommand
+from setup_utility import CleanCommand, FixHeader
 
 cmd_classes = {
-    'behave_test': behave_test
+    'behave_test': behave_test,
+    'fix_header': FixHeader
              }
 if CleanCommand:
     cmd_classes['clean'] = CleanCommand
@@ -31,7 +32,7 @@ if CleanCommand:
 setup(
     name = 'pymb',
     version = '0.0.1',
-    description = 'QuantLET - an event driven framework for large scale real-time analytics',
+    description = 'Micro-library for micro-benchmarks in Python: a micro-layer on top of timeit. (Hopefully!) macro helpful',
     author='Jorge M. Faleiro Jr.',
     author_email='j@falei.ro',
     url='https://github.com/jfaleiro/pymb',

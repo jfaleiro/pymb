@@ -6,14 +6,22 @@ Micro-library for micro-benchmarks in Python: a micro-layer on top of timeit. (H
 ```
 git clone https://github.com/jfaleiro/pymb.git
 cd pymb
-./setup.py behave_test
+```
+
+Sanity checks
+```
+python setup.py behave_test
 ```
 
 ## Use
 
+To profile any function just pass it as an argument to the profile function
 ```python
 import microbench as mb
 mb.profile(lambda: [str(i) for i in range(1000)])
+```
+Will execute a number of repetitions, each iteration executing function a number of loops
+```
 benchmarking 10 repetitions
 iteration 0: 0.005507 usecs for 10 loops, 550.699234 umicros per loop
 iteration 1: 0.007690 usecs for 10 loops, 768.995285 umicros per loop
@@ -32,9 +40,11 @@ Out[5]:
 
 ## Tests, use cases, etc
 
-Recorded as features, look under pymb/features for details
+Recorded as features, look under pymb/features for details, e.g.
 ```
 (py27)jorge@ubuntu:~/githubremote/pymb$ behave
+```
+```
 Feature: profiling a function # features/runtime.feature:20
 
   Scenario Outline: profiling yields correct number of parameters -- @1.1   # features/runtime.feature:28
